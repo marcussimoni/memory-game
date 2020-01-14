@@ -35,16 +35,20 @@ init = (cards) => {
         content += createHidedCard(card)
     });
     
+    content += '<div class="clear"></div>'
+
     const div = getElement('card-content')
     
     div.innerHTML = content
+
+
 }
 
 clearPairs = () => {
     let effect = ''
 
     if(sameCardsSelected(pairs)){
-        effect = 'card-effect-dismiss'
+        effect = 'card-clicked'
     }
 
     for(i = 0; i < pairs.length; i++){
@@ -60,12 +64,16 @@ clearPairs = () => {
 checkSelectedCard = (index) => {
     const card = array.filter(a => a.index === index)[0]
     
-    if(pairs.includes(card)){
-        pairs.pop()
-        hideCard(card)
-    } else {
-        pairs.push(card)
-        showCard(card)
+    if(pairs.length < 2){
+
+        if(pairs.includes(card)){
+            pairs.pop()
+            hideCard(card)
+        } else {
+            pairs.push(card)
+            showCard(card)
+        }
+
     }
     
     if(pairs.length === 2){
@@ -79,7 +87,6 @@ checkSelectedCard = (index) => {
                 clearPairs()
             }
         }, 1000);
-        
     } 
 }
 
