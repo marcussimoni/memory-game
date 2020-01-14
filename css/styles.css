@@ -1,0 +1,33 @@
+.card-content {
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+}
+
+.card {
+    width: 100px;
+    height: 150px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-left: 20px;
+    font-size: 20px;
+    text-align: center;
+    margin: auto;
+}
+
+.card-clicked {
+    animation: card-effect-dismiss 1s 1;
+}
+
+.card:hover {
+    transform: translateY(5px);
+
+}
+
+@keyframes card-effect-dismiss {
+    0% {transform: translateY(0px);}
+    25% {transform: translateY(100px);}
+    50% {transform: translateY(-100px);}
+    75% {transform: translateY(-1000px);}
+}
+
