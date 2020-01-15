@@ -2,47 +2,40 @@ class CardController {
 
     pairs = []
     totalItens = 10
-    array = []
+    cards = []
     score = 0
     attempts = 20
 
-    buildDeck = (cards) => {
-        const div = this.getElement('card-content')
+    arrayUtil
+    domUtil
+
+    constructor(){
+        this.arrayUtil = new ArrayUtil()
+        this.domUtil = new DomUtil()
+    }
+
+    buildDeck = () => {
+        this.cards = this.arrayUtil.createArray(this.totalItens)
+
+        const div = this.domUtil.getElement('card-content')
         div.innerHTML = ""
 
-        cards.forEach((card) => {
-            div.appendChild(this.createHidedCard(card)) 
+        this.cards.forEach((card) => {
+            div.appendChild(this.createCard(card)) 
         });
-        
-        div.appendChild(this.createDivClear())
+
+        div.appendChild(this.domUtil.createDivClear())
+
+        this.hideCards()
     }
 
-    createArray = (totalItens) => {
-        let i = 1
-        let number = 1;
-        const array = new Array()
-        
-        while(i <= totalItens * 2){
-            
-            array.push({index: i++, number: number})
-            array.push({index: i++, number: number})
-    
-            number++
-        }
-        
-        this.shuffle(array)
-        this.array = array
-   
-        return array
+    hideCards = () => {
+        setTimeout(() => {
+            this.cards.forEach(card => {
+                this.domUtil.getElement(`card-${card.index}`).innerHTML = ''
+            })
+        }, 3000);
     }
-    
-    getElement = (id) => {
-        return document.getElementById(id)
-    }
-    
-    shuffle = (array) => {
-        array.sort(() => Math.random() - 0.5)
-    } 
     
     clearPairs = () => {
         let effect = ''
@@ -52,52 +45,37 @@ class CardController {
         }
     
         for(let i = 0; i < this.pairs.length; i++){
-    
             const card = this.pairs[i]
             this.hideCard(card, effect)
-    
         }
     
         this.pairs = []
     }
     
     checkSelectedCard = (index) => {
-        console.log('clicked')
-        const card = this.array.filter(a => a.index === index)[0]
+        const card = this.cards.filter(a => a.index === index)[0]
         
-        if(this.pairs.length < 2){
-    
-            if(this.pairs.includes(card)){
-                //this.pairs.pop()
-                //this.hideCard(card)
-            } else {
-                this.pairs.push(card)
-                this.showCard(card)
-            }
-    
+        if(this.pairs.length < 2 && !this.pairs.includes(card)){
+            this.pairs.push(card)
+            this.showCard(card)
         }
         
         if(this.pairs.length === 2){
             setTimeout(() => {
-                if(this.sameCardsSelected(this.pairs)){
-                    this.updateScore()    
-                } else {
-                    this.updateAttempts()
-                }
-                this.clearPairs()
+                this.updateScoreAndAttempts();
             }, 1000);
         } 
     }
 
     updateScore = () => {
         this.score += 10;
-        const score = this.getElement('score')
+        const score = this.domUtil.getElement('score')
         score.innerHTML = this.score
     }
 
     updateAttempts = () => {
         this.attempts--;
-        const attempts = this.getElement('attempts')
+        const attempts = this.domUtil.getElement('attempts')
         attempts.innerHTML = this.attempts
     }
     
@@ -128,27 +106,27 @@ class CardController {
     
     getCard = (card) => {
         if(card){
-            return this.getElement(`card-${card.index}`)
+            return this.domUtil.getElement(`card-${card.index}`)
         }
     } 
     
-    createHidedCard = (card) => {
+    createCard = (card) => {
         const index = card.index
-        const div = document.createElement('div')
+        const div = this.domUtil.createElement('div')
         div.className = `card`
         div.id = `card-${index}`
+        div.innerHTML = card.number
         div.addEventListener('click', event => this.checkSelectedCard(index))
         return div
-        //return `<div class="card" id="card-${index}" onClick="checkSelectedCard(${index}).bind(this)"></div>`
     }
 
-    createElement = (name) => {
-        return document.createElement(name)
-    }
-
-    createDivClear() {
-        const div = this.createElement('div')        
-        div.className = 'clear'
-        return div
+    updateScoreAndAttempts = () => {
+        if (this.sameCardsSelected(this.pairs)) {
+            this.updateScore();
+        }
+        else {
+            this.updateAttempts();
+        }
+        this.clearPairs();
     }
 }
