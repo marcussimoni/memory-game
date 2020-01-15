@@ -24,8 +24,6 @@ class CardController {
             div.appendChild(this.createCard(card)) 
         });
 
-        div.appendChild(this.domUtil.createDivClear())
-
         this.hideCards()
     }
 
