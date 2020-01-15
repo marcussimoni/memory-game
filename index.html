@@ -5,16 +5,27 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Document</title>
-        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/cards.css">
+        <link rel="stylesheet" href="css/header.css">
     </head>
     <body>
         
-        <div id="card-content" class="card-content"> </div>
+        <div id="header-content" class="header-content">
+            <div id="score-content" class="score">
+                <h3>SCORE: </h3>
+                <span id="score">0</span>
+            </div>
+            <div id="attempts-content" class="attempts">
+                <h3 id="attempts">Attemps: </h3>
+            </div>
+        </div>
+        <div id="card-content" class="card-content"></div>
         
     </body>
-
-    <script src="js/scripts.js"></script>
+    <script src="js/CardController.js"></script>
+    <script src="js/Main.js"></script>
     <script>
-        init(array)
+        const main = new Main()
+        main.start()
     </script>
 </html>    

@@ -1,0 +1,55 @@
+.card-content {
+    margin: 0 auto;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.card {
+    width: 100px;
+    height: 150px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    font-size: 35px;
+    text-align: center;
+    vertical-align: middle;
+    float: left;
+    box-shadow: 1px 1px black;
+    cursor: pointer;
+}
+
+.card-clicked {
+    animation: card-effect-dismiss 1s 1;
+}
+
+.card:hover {
+    animation: card-effect-hover 3s 1; 
+}
+
+.clear {
+    clear: both;
+}
+
+.hide-card {
+    opacity: 0;
+    pointer-events: none;
+}
+
+@keyframes card-fade-out {
+    0% {opacity: 1;};
+    100% {opacity: 0;};
+}
+
+@keyframes card-effect-hover {
+    from {transform: translateY(0px)};
+    to {transform: translateY(3px)};
+}
+
+@keyframes card-effect-dismiss {
+    0% {transform: translateY(0px);}
+    25% {transform: translateY(100px);}
+    50% {transform: translateY(-100px);}
+    75% {transform: translateY(-1000px);}
+}
