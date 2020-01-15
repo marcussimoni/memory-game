@@ -3,6 +3,8 @@ class CardController {
     pairs = []
     totalItens = 10
     array = []
+    score = 0
+    attempts = 20
 
     buildDeck = (cards) => {
         const div = this.getElement('card-content')
@@ -66,8 +68,8 @@ class CardController {
         if(this.pairs.length < 2){
     
             if(this.pairs.includes(card)){
-                this.pairs.pop()
-                this.hideCard(card)
+                //this.pairs.pop()
+                //this.hideCard(card)
             } else {
                 this.pairs.push(card)
                 this.showCard(card)
@@ -78,13 +80,11 @@ class CardController {
         if(this.pairs.length === 2){
             setTimeout(() => {
                 if(this.sameCardsSelected(this.pairs)){
-                    const card1 = this.pairs[0]
-                    this.clearPairs()
-                    const matchCards = this.array.filter(card => card.number === card1.number)
-                    
+                    this.updateScore()    
                 } else {
-                    this.clearPairs()
+                    this.updateAttempts()
                 }
+                this.clearPairs()
             }, 1000);
         } 
     }
@@ -93,6 +93,12 @@ class CardController {
         this.score += 10;
         const score = this.getElement('score')
         score.innerHTML = this.score
+    }
+
+    updateAttempts = () => {
+        this.attempts--;
+        const attempts = this.getElement('attempts')
+        attempts.innerHTML = this.attempts
     }
     
     sameCardsSelected = (pairs) => {
