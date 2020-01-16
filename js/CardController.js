@@ -25,15 +25,24 @@ class CardController {
         this.updateAttempts()
     }
 
-    buildDeck = (level) => {
+    configNewGame = (level) => {
 
         const difficulty = this.difficulty.nextDifficulty(level)
+        
         this.configDifficulty(difficulty)
+
+        this.buildDeck()
+
+        this.domUtil.updateElement('level', level);
+        
+    }
+
+    buildDeck = () => {
 
         this.cards = this.arrayUtil.createArray(this.totalItens)
 
         const div = this.domUtil.getElement('card-content')
-        div.innerHTML = ""
+        div.innerHTML = ''
 
         this.cards.forEach((card) => {
             div.appendChild(this.createCard(card)) 
@@ -45,9 +54,9 @@ class CardController {
     hideCards = () => {
         setTimeout(() => {
             this.cards.forEach(card => {
-                this.domUtil.getElement(`card-${card.index}`).innerHTML = ''
+                this.domUtil.updateElement(`card-${card.index}`, '')
             })
-        }, 6000);
+        }, 5000);
     }
     
     clearPairs = () => {
@@ -79,28 +88,31 @@ class CardController {
 
                 if(this.attempts < 0){
                     alert("Game Over")
-                    this.buildDeck(1)
+                    this.configNewGame(1)
                 }
-
-                if(this.cards.length === 0){
-                    level++
-                    alert(`Congratulations. Head to the next level: ${level}`)
-                    this.buildDeck(level)
+                
+                if(this.allCardsDiscovered()){
+                    this.level++
+                    alert(`Congratulations. Head to the next level: ${this.level}`)
+                    this.configNewGame(this.level)
                 }
-            }, 1000);
+            }, 500);
         } 
+    }
+
+    allCardsDiscovered = () => {
+        const cards = this.cards.filter(card => card.visible)
+        return cards.length === 0
     }
 
     updateScore = () => {
         this.score += 10;
-        const score = this.domUtil.getElement('score')
-        score.innerHTML = this.score
+        this.domUtil.updateElement('score', this.score)
     }
 
     updateAttempts = () => {
         this.attempts--;
-        const attempts = this.domUtil.getElement('attempts')
-        attempts.innerHTML = this.attempts
+        this.domUtil.updateElement('attempts', this.attempts)
     }
     
     sameCardsSelected = (pairs) => {
@@ -146,11 +158,27 @@ class CardController {
 
     updateScoreAndAttempts = () => {
         if (this.sameCardsSelected(this.pairs)) {
+            this.changeVisibleState(this.pairs)
             this.updateScore();
         }
         else {
             this.updateAttempts();
         }
         this.clearPairs();
+    }
+
+    changeVisibleState = (pairs) => {
+
+        pairs.forEach(card => {
+
+            this.cards = this.cards.map(c => {
+                if(card.index === c.index && card.number === c.number){
+                    c.visible = !c.visible
+                }
+                return c
+            })
+
+        })
+
     }
 }
