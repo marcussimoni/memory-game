@@ -17,7 +17,7 @@ class Difficulty {
             {
                 level: 1,
                 attempts: 20,
-                cards: 15
+                cards: 5
             },
             {
                 level: 2,
