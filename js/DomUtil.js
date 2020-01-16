@@ -8,4 +8,8 @@ class DomUtil {
         return document.getElementById(id)
     }
 
+    updateElement = (id, value) => {
+        this.getElement(id).innerHTML = value
+    }
+
 }
