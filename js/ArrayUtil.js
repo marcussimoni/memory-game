@@ -11,8 +11,8 @@ class ArrayUtil {
         
         while(i <= totalItens * 2){
             
-            array.push({index: i++, number: number})
-            array.push({index: i++, number: number})
+            array.push({index: i++, number: number, visible: true})
+            array.push({index: i++, number: number, visible: true})
     
             number++
         }
