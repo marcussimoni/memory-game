@@ -6,7 +6,7 @@ class Main {
 
     start = () => {
         const cardController = new CardController()
-        cardController.buildDeck()
+        cardController.buildDeck(1)
     }
 
 }

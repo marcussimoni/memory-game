@@ -5,6 +5,8 @@ class CardController {
     cards = []
     score = 0
     attempts = 20
+    level = 1
+    difficulty
 
     arrayUtil
     domUtil
@@ -12,9 +14,22 @@ class CardController {
     constructor(){
         this.arrayUtil = new ArrayUtil()
         this.domUtil = new DomUtil()
+        this.difficulty = new Difficulty()
+        
     }
 
-    buildDeck = () => {
+    configDifficulty = (difficulty) => {
+        this.totalItens = difficulty.cards
+        this.attempts = difficulty.attempts
+        this.level = difficulty.level
+        this.updateAttempts()
+    }
+
+    buildDeck = (level) => {
+
+        const difficulty = this.difficulty.nextDifficulty(level)
+        this.configDifficulty(difficulty)
+
         this.cards = this.arrayUtil.createArray(this.totalItens)
 
         const div = this.domUtil.getElement('card-content')
@@ -32,7 +47,7 @@ class CardController {
             this.cards.forEach(card => {
                 this.domUtil.getElement(`card-${card.index}`).innerHTML = ''
             })
-        }, 3000);
+        }, 6000);
     }
     
     clearPairs = () => {
@@ -61,6 +76,17 @@ class CardController {
         if(this.pairs.length === 2){
             setTimeout(() => {
                 this.updateScoreAndAttempts();
+
+                if(this.attempts < 0){
+                    alert("Game Over")
+                    this.buildDeck(1)
+                }
+
+                if(this.cards.length === 0){
+                    level++
+                    alert(`Congratulations. Head to the next level: ${level}`)
+                    this.buildDeck(level)
+                }
             }, 1000);
         } 
     }
