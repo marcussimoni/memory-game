@@ -5,22 +5,26 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Memory Game</title>
+        <link rel="stylesheet" href="css/css-reset.css">
         <link rel="stylesheet" href="css/cards.css">
         <link rel="stylesheet" href="css/header.css">
     </head>
     <body>
+        <header>
+            <h1>Memory Game</h1>
+            <ul>
+                <li>
+                    <h3>Level: <span id="level">1</span></h3> 
+                </li>
+                <li>
+                    <h3>Attemps: <span id="attempts">20</span></h3>
+                </li>
+                <li>
+                    <h3>Score: <span id="score">0</span></h3>
+                </li>
+            </ul>
+        </header>
         
-        <div id="header-content" class="header-content">
-            <div id="score-content" class="score">
-                <h3>SCORE: <span id="score">0</span></h3>
-            </div>
-            <div id="attempts-content" class="attempts-content">
-                <h3>Attemps: <span id="attempts">20</span></h3>
-            </div>
-            <div id="level-content" class="level-content">
-                <h3>Level: <span id="level">1</span></h3>
-            </div>
-        </div>
         <div id="card-content" class="card-content"></div>
         
     </body>

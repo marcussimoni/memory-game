@@ -1,13 +1,13 @@
-.header-content {
+header {
+    text-align: center;
+}
+
+header ul{
     display: inline-block;
 }
 
-.score-content {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+header li {
     display: inline-block;
+    margin-left: 10px;
 }
 
-.attempts-content {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: inline-block;
-}
