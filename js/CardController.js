@@ -59,7 +59,7 @@ class CardController {
             div.appendChild(this.createCard(card)) 
         });
 
-        this.hideCards()
+        //this.hideCards()
     }
 
     hideCards = () => {
@@ -200,7 +200,7 @@ class CardController {
         const hints = level.hints
         const button = this.domUtil.getElement('hint')
         button.innerHTML = `Hints ${hints}`
-        button.addEventListener('click', event => this.hint())
+        button.onclick = this.hint
     }
 
     hint = () => {
@@ -227,6 +227,7 @@ class CardController {
     }
 
     updateHintCount = () => {
+        debugger
         this.level.hints -= 1
         this.domUtil.updateElement('hint', `Hints ${this.level.hints}`)
     }
