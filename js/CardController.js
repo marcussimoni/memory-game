@@ -1,12 +1,13 @@
 class CardController {
 
     pairs = []
-    totalItens = 10
+    totalItens = 0
     cards = []
     score = 0
-    attempts = 20
-    level = 1
-    difficulty
+    attempts = 0
+    stage = 1
+    level
+    levelConfig
 
     arrayUtil
     domUtil
@@ -14,22 +15,32 @@ class CardController {
     constructor(){
         this.arrayUtil = new ArrayUtil()
         this.domUtil = new DomUtil()
-        this.difficulty = new Difficulty()
-        
+        this.levelConfig = new LevelConfig()
     }
 
     configDifficulty = (difficulty) => {
         this.totalItens = difficulty.cards
         this.attempts = difficulty.attempts
-        this.level = difficulty.level
+        this.stage = difficulty.level
         this.updateAttempts()
     }
 
     configNewGame = (level) => {
-
-        const difficulty = this.difficulty.nextDifficulty(level)
         
-        this.configDifficulty(difficulty)
+        if(this.attempts > 0){
+            const bonus = this.attempts * 10
+            this.updateScore(bonus)
+        }
+
+        debugger
+
+        this.level = this.levelConfig.nextDifficulty(level)
+        
+        this.hintButton(this.level)
+        
+        this.level.attempts += 1
+
+        this.configDifficulty(this.level)
 
         this.buildDeck()
 
@@ -56,7 +67,7 @@ class CardController {
             this.cards.forEach(card => {
                 this.domUtil.updateElement(`card-${card.index}`, '')
             })
-        }, 5000);
+        }, 3000);
     }
     
     clearPairs = () => {
@@ -92,9 +103,9 @@ class CardController {
                 }
                 
                 if(this.allCardsDiscovered()){
-                    this.level++
-                    alert(`Congratulations. Head to the next level: ${this.level}`)
-                    this.configNewGame(this.level)
+                    this.stage++
+                    alert(`Congratulations. Head to the next level: ${this.stage}`)
+                    this.configNewGame(this.stage)
                 }
             }, 500);
         } 
@@ -105,7 +116,10 @@ class CardController {
         return cards.length === 0
     }
 
-    updateScore = () => {
+    updateScore = (bonus = 0) => {
+        if(bonus > 0){
+            this.score += bonus
+        }
         this.score += 10;
         this.domUtil.updateElement('score', this.score)
     }
@@ -180,5 +194,62 @@ class CardController {
 
         })
 
+    }
+
+    hintButton = (level) => {
+        const hints = level.hints
+        const button = this.domUtil.getElement('hint')
+        button.innerHTML = `Hints ${hints}`
+        button.addEventListener('click', event => this.hint())
+    }
+
+    hint = () => {
+
+        if(this.level.hints <= 0){
+            alert('You do not have enought hints')
+            return
+        }
+
+        this.updateHintCount()
+
+        if(this.pairs.length === 0){
+            const firstCard = this.getCardForHint(this.cards)
+            this.hintCards(firstCard)
+            return
+        }
+
+        if(this.pairs.length === 1){
+            const firstCard = this.getCardForHint(this.pairs)
+            this.hintCards(firstCard)
+            return
+        }
+
+    }
+
+    updateHintCount = () => {
+        this.level.hints -= 1
+        this.domUtil.updateElement('hint', `Hints ${this.level.hints}`)
+    }
+
+    getCardForHint = (cards) => {
+        return cards.filter(card => card.visible)[0]
+    }
+
+    hintCards = (firstCard) => {
+        const secondCard = this.findCard(firstCard)
+        this.hintCard(firstCard)
+        this.hintCard(secondCard)
+    }
+
+    hintCard = (card) => {
+        const element = this.domUtil.getElement(`card-${card.index}`)
+        element.className += ' hint-effect'
+    }
+
+    findCard = (selectedCard) => {
+        return this.cards.filter(card => card.number === selectedCard.number 
+            && card.index !== selectedCard.index
+            && card.visible
+            )[0]
     }
 }
