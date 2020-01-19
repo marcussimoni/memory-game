@@ -110,8 +110,12 @@ class CardController {
                 }
                 
                 if(this.allCardsDiscovered()){
-                    this.stage++
-                    this.nextLevel(this.stage)
+                    if(this.level.finalLevel) {
+                        this.gameCompleted()
+                    } else {
+                        this.stage++
+                        this.nextLevel(this.stage)
+                    }
                     return
                 }
             }, 500);
@@ -264,7 +268,7 @@ class CardController {
         const startNewGame = 'startNewGame'
         this.modal.updateHeader('Game Over')
         this.modal.updateBody('Try again')
-        this.modal.updateFooter(`<button id="${startNewGame}">Start new game ?</button>`)
+        this.modal.updateFooter(`<button id="${startNewGame}" class="button">Start new game ?</button>`)
         this.modal.show()
         this.domUtil.setOnClickEvent(startNewGame, () => {this.configNewGame(1)})
     }
@@ -272,9 +276,18 @@ class CardController {
     nextLevel = (stage) => {
         const startNextLevel = 'startNextLevel'
         this.modal.updateHeader('Level Completed')
-        this.modal.updateBody(`Congratulations. Head to the next level: ${this.stage}`)
-        this.modal.updateFooter(`<button id="${startNextLevel}">Head to the next level ?</button>`)
+        this.modal.updateBody(`Congratulations. Head to the level: ${this.stage}`)
+        this.modal.updateFooter(`<button id="${startNextLevel}" class="button">Head to the next level ?</button>`)
         this.modal.show()
         this.domUtil.setOnClickEvent(startNextLevel, () => {this.configNewGame(stage)})
+    }
+
+    gameCompleted = () => {
+        const startNewGame = 'startNewGame'
+        this.modal.updateHeader('All levels completed')
+        this.modal.updateBody('<p>Congratulations!!!</p><p>You completed all levels in the game.</p><p>Do you want to start a new game?</p>')
+        this.modal.updateFooter(`<button id="${startNewGame}" class="button">Start new game ?</button>`)
+        this.modal.show()
+        this.domUtil.setOnClickEvent(startNewGame, () => {location.reload()})
     }
 }

@@ -55,7 +55,8 @@ class LevelConfig {
                 level: 5,
                 attempts: 18,
                 cards: 12 * difficulty,
-                hints: 5
+                hints: 5,
+                finalLevel: true
             }
         ]
     }

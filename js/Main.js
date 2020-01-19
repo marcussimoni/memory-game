@@ -13,7 +13,7 @@ class Main {
         
         this.modal.updateHeader(`<h3>Select your game difficulty</h3>`)
         this.modal.updateBody(this.createOptions())
-        this.modal.updateFooter(`<button id="modal-confirm">Confirm</button>`)
+        this.modal.updateFooter(`<button id="modal-confirm" class="button">Start Game</button>`)
 
         this.domUtil.setOnClickEvent('modal-confirm', this.setDifficulty)
     }
