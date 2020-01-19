@@ -12,13 +12,14 @@ class CardController {
     arrayUtil
     domUtil
 
-    constructor(){
+    constructor(difficulty){
+        this.difficulty = difficulty
         this.arrayUtil = new ArrayUtil()
         this.domUtil = new DomUtil()
-        this.levelConfig = new LevelConfig()
+        this.levelConfig = new LevelConfig(difficulty)
     }
 
-    configDifficulty = (difficulty) => {
+    configLevel = (difficulty) => {
         this.totalItens = difficulty.cards
         this.attempts = difficulty.attempts
         this.stage = difficulty.level
@@ -26,21 +27,18 @@ class CardController {
     }
 
     configNewGame = (level) => {
-        
         if(this.attempts > 0){
             const bonus = this.attempts * 10
             this.updateScore(bonus)
         }
 
-        debugger
-
-        this.level = this.levelConfig.nextDifficulty(level)
+        this.level = this.levelConfig.nextLevel(level)
         
         this.hintButton(this.level)
         
         this.level.attempts += 1
 
-        this.configDifficulty(this.level)
+        this.configLevel(this.level)
 
         this.buildDeck()
 
@@ -227,7 +225,6 @@ class CardController {
     }
 
     updateHintCount = () => {
-        debugger
         this.level.hints -= 1
         this.domUtil.updateElement('hint', `Hints ${this.level.hints}`)
     }

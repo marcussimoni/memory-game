@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="css/css-reset.css">
         <link rel="stylesheet" href="css/cards.css">
         <link rel="stylesheet" href="css/header.css">
+        <link rel="stylesheet" href="css/modal.css">
     </head>
     <body>
         <header>
@@ -28,8 +29,38 @@
             </ul>
         </header>
         
-        <div id="card-content" class="card-content"></div>
-        
+        <main>
+            <div id="card-content" class="card-content"></div>
+
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    
+                    <div class="modal-header">
+                        <h3>Select your game difficulty</h3>
+                    </div>
+                    
+                    <div id="dialog" class="modal-body">
+                        <select id="difficulty">
+                            <option value="very-easy">Very easy</option>
+                            <option value="easy">Easy</option>
+                            <option value="medium">Medium</option>
+                            <option value="hard">Hard</option>
+                            <option value="very-hard">Very Hard</option>
+                        </select>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button id="modal-confirm">Confirm</button>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+
+        <footer>
+
+        </footer>
+
     </body>
     <script src="js/LevelConfig.js"></script>
     <script src="js/DomUtil.js"></script>
