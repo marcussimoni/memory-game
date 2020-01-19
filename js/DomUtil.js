@@ -12,4 +12,9 @@ class DomUtil {
         this.getElement(id).innerHTML = value
     }
 
+    setOnClickEvent = (id, method) => {
+        this.getElement(id).onclick = method
+        
+    }
+
 }

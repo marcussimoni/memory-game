@@ -34,25 +34,9 @@
 
             <div id="modal" class="modal">
                 <div class="modal-content">
-                    
-                    <div class="modal-header">
-                        <h3>Select your game difficulty</h3>
-                    </div>
-                    
-                    <div id="dialog" class="modal-body">
-                        <select id="difficulty">
-                            <option value="very-easy">Very easy</option>
-                            <option value="easy">Easy</option>
-                            <option value="medium">Medium</option>
-                            <option value="hard">Hard</option>
-                            <option value="very-hard">Very Hard</option>
-                        </select>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button id="modal-confirm">Confirm</button>
-                    </div>
-
+                    <div class="modal-header" id="modal-header"></div>
+                    <div class="modal-body" id="modal-body"></div>
+                    <div class="modal-footer" id="modal-footer"></div>
                 </div>
             </div>
         </main>
@@ -65,6 +49,7 @@
     <script src="js/LevelConfig.js"></script>
     <script src="js/DomUtil.js"></script>
     <script src="js/ArrayUtil.js"></script>
+    <script src="js/Modal.js"></script>
     <script src="js/CardController.js"></script>
     <script src="js/Main.js"></script>
     <script>

@@ -11,12 +11,14 @@ class CardController {
 
     arrayUtil
     domUtil
+    
 
     constructor(difficulty){
         this.difficulty = difficulty
         this.arrayUtil = new ArrayUtil()
         this.domUtil = new DomUtil()
         this.levelConfig = new LevelConfig(difficulty)
+        this.modal = new Modal()
     }
 
     configLevel = (difficulty) => {
@@ -27,6 +29,13 @@ class CardController {
     }
 
     configNewGame = (level) => {
+
+        this.modal.hide()
+
+        if(!level || level === 0){
+            level = 1
+        }
+
         if(this.attempts > 0){
             const bonus = this.attempts * 10
             this.updateScore(bonus)
@@ -96,14 +105,14 @@ class CardController {
                 this.updateScoreAndAttempts();
 
                 if(this.attempts < 0){
-                    alert("Game Over")
-                    this.configNewGame(1)
+                    this.gameOver()
+                    return;
                 }
                 
                 if(this.allCardsDiscovered()){
                     this.stage++
-                    alert(`Congratulations. Head to the next level: ${this.stage}`)
-                    this.configNewGame(this.stage)
+                    this.nextLevel(this.stage)
+                    return
                 }
             }, 500);
         } 
@@ -249,5 +258,23 @@ class CardController {
             && card.index !== selectedCard.index
             && card.visible
             )[0]
+    }
+
+    gameOver = () => {
+        const startNewGame = 'startNewGame'
+        this.modal.updateHeader('Game Over')
+        this.modal.updateBody('Try again')
+        this.modal.updateFooter(`<button id="${startNewGame}">Start new game ?</button>`)
+        this.modal.show()
+        this.domUtil.setOnClickEvent(startNewGame, () => {this.configNewGame(1)})
+    }
+
+    nextLevel = (stage) => {
+        const startNextLevel = 'startNextLevel'
+        this.modal.updateHeader('Level Completed')
+        this.modal.updateBody(`Congratulations. Head to the next level: ${this.stage}`)
+        this.modal.updateFooter(`<button id="${startNextLevel}">Head to the next level ?</button>`)
+        this.modal.show()
+        this.domUtil.setOnClickEvent(startNextLevel, () => {this.configNewGame(stage)})
     }
 }

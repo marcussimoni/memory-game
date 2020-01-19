@@ -1,6 +1,7 @@
 class Main {
 
     domUtil = new DomUtil()
+    modal = new Modal()
 
     start = () => {
         this.selectGameDifficulty()
@@ -9,8 +10,12 @@ class Main {
     selectGameDifficulty = () => {
         const modal = this.domUtil.getElement('modal')
         modal.style.display = 'block'
-        const button = this.domUtil.getElement('modal-confirm')
-        button.onclick = this.setDifficulty
+        
+        this.modal.updateHeader(`<h3>Select your game difficulty</h3>`)
+        this.modal.updateBody(this.createOptions())
+        this.modal.updateFooter(`<button id="modal-confirm">Confirm</button>`)
+
+        this.domUtil.setOnClickEvent('modal-confirm', this.setDifficulty)
     }
 
     setDifficulty = () => {
@@ -23,6 +28,18 @@ class Main {
     hideModal = () => {
         const modal = this.domUtil.getElement('modal')
         modal.style.display = 'none'
+    }
+
+    createOptions = () => {
+        const options = `
+        <select id="difficulty">
+            <option value="very-easy">Very easy</option>
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+            <option value="very-hard">Very Hard</option>
+        </select>`
+        return options
     }
 
 }
