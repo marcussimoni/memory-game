@@ -66,7 +66,7 @@ class CardController {
             div.appendChild(this.createCard(card)) 
         });
 
-        //this.hideCards()
+        this.hideCards()
     }
 
     hideCards = () => {
