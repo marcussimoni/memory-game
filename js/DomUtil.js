@@ -14,7 +14,6 @@ class DomUtil {
 
     setOnClickEvent = (id, method) => {
         this.getElement(id).onclick = method
-        
     }
 
 }
