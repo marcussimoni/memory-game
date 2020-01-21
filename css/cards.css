@@ -19,14 +19,61 @@
     box-shadow: 1px 1px black;
     cursor: pointer;
     display: inline-block;
-}
-
-.card-clicked {
-    animation: card-effect-dismiss 1s 1;
+    background: linear-gradient(0deg, #fff, #eee);
+    border:1px solid #ccc;
+    transition: 0.5s;
 }
 
 .card:hover {
-    animation: card-effect-hover 3s 1; 
+    outline:none;
+    border-color: #9ecaed;
+    box-shadow: 1px 1px  #9ecaed;
+}
+
+.card-clicked {
+    width: 100px;
+    height: 150px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    font-size: 35px;
+    text-align: center;
+    vertical-align: middle;
+    box-shadow: 1px 1px black;
+    cursor: pointer;
+    display: inline-block;
+    background: linear-gradient(0deg, #fff, #eee);
+    border:1px solid #ccc;
+    transition: 0.5s;
+    position: relative;
+}
+.card-clicked:after {
+    content: '';
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    background: linear-gradient(45deg, #fb0094, #0000ff, #00ff00,#ffff00, #ff0000, #fb0094, 
+        #0000ff, #00ff00,#ffff00, #ff0000);
+    background-size: 400%;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    z-index: -1;
+    animation: steam 20s linear infinite;
+    border-radius: 10px;
+}
+.card-clicked:after {
+    filter: blur(10px);
+}
+
+
+@keyframes steam {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 400% 0;
+    }
 }
 
 .clear {

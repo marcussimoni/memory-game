@@ -74,12 +74,11 @@ class CardController {
             this.cards.forEach(card => {
                 this.domUtil.updateElement(`card-${card.index}`, '')
             })
-        }, 3000);
+        }, 1000);
     }
     
     clearPairs = () => {
         let effect = ''
-    
         if(this.sameCardsSelected(this.pairs)){
             effect = 'hide-card'
         }
@@ -97,7 +96,7 @@ class CardController {
         
         if(this.pairs.length < 2 && !this.pairs.includes(card)){
             this.pairs.push(card)
-            this.showCard(card)
+            this.showCard(card, ' card-clicked')
         }
         
         if(this.pairs.length === 2){
@@ -118,7 +117,7 @@ class CardController {
                     }
                     return
                 }
-            }, 500);
+            }, 1000);
         } 
     }
 
@@ -160,9 +159,8 @@ class CardController {
             element.innerHTML = value
         }
     
-        if(effect){
-            element.className = 'card ' + effect
-        }
+        element.className = 'card ' + effect
+        
     }
     
     getCard = (card) => {
