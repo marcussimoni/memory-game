@@ -8,7 +8,7 @@ section {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: linear-gradient(0deg, #fff, #eee);
+    background: radial-gradient(#000, #333);
 }
 
 .background {
