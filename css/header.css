@@ -3,6 +3,8 @@
     height: 150px;
     text-align: center;
     padding: 50px;
+    color: white;
+    box-shadow: 1px 1px #ccc;
 }
 
 #header h1 {
