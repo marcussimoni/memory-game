@@ -1,27 +1,33 @@
 .card-content {
-    position: relative;
     text-align: center;
+    margin: 0 auto;
+    position: relative;
     border: 1px solid black;
     border-radius: 5px;
     padding: 20px;
+    background: linear-gradient(0deg, #eee, #fff);
+    width: 90%;
+    height: 500px;
+    opacity: 1;
 }
 
 .card {
-    width: 100px;
-    height: 150px;
+    width: 150px;
+    height: 200px;
     border: 1px solid black;
     border-radius: 5px;
     margin-left: 20px;
     margin-bottom: 20px;
+    background-color: white;
     font-size: 35px;
     text-align: center;
     vertical-align: middle;
     box-shadow: 1px 1px black;
     cursor: pointer;
     display: inline-block;
-    background: linear-gradient(0deg, #fff, #eee);
     border:1px solid #ccc;
     transition: 0.5s;
+    opacity: 1;
 }
 
 .card:hover {
@@ -31,8 +37,8 @@
 }
 
 .card-clicked {
-    width: 100px;
-    height: 150px;
+    width: 150px;
+    height: 200px;
     border: 1px solid black;
     border-radius: 5px;
     margin-left: 20px;
@@ -43,7 +49,7 @@
     box-shadow: 1px 1px black;
     cursor: pointer;
     display: inline-block;
-    background: linear-gradient(0deg, #fff, #eee);
+    background-color: white ;
     border:1px solid #ccc;
     transition: 0.5s;
     position: relative;
@@ -65,7 +71,6 @@
 .card-clicked:after {
     filter: blur(10px);
 }
-
 
 @keyframes steam {
     from {

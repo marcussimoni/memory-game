@@ -1,13 +1,29 @@
-header {
+#header {
+    position: relative;
+    height: 150px;
     text-align: center;
+    padding: 50px;
 }
 
-header ul{
+#header h1 {
+    font-size: 35px;
+}
+
+#header ul{
+    font-size: 20px;
     display: inline-block;
 }
 
-header li {
+#header li {
     display: inline-block;
     margin-left: 10px;
 }
 
+#header button{
+    font-size: 20px;
+    padding: 10px 50px;
+    border: none;
+    background: darkgray;
+    box-shadow: 1px 1px black;
+    cursor: pointer;
+}

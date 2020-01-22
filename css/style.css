@@ -1,3 +1,112 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+section {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, #fff, #eee);
+}
+
+.background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
+.card-background {
+    width: 75px;
+    height: 100px;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 1px 1px black;
+    display: inline-block;
+    border:1px solid #ccc;
+    position: absolute;
+    transform: rotate(45deg);
+    background-color: white;
+}
+
+.background div {
+    position: absolute;
+    display: block;
+}
+
+.background div:nth-child(1) {
+    left: 50%;
+    animation: background-animation 10s linear infinite;
+    animation-delay: -1s;
+}
+.background div:nth-child(2) {
+    left: 10%;
+    animation: background-animation 15s linear infinite;
+}
+.background div:nth-child(3) {
+    left: 90%;
+    animation: background-animation 8s linear infinite;
+    animation-delay: -3s;
+}
+.background div:nth-child(4) {
+    left: 80%;
+    animation: background-animation 5s linear infinite;
+}
+.background div:nth-child(5) {
+    left: 20%;
+    animation: background-animation 6s linear infinite;
+    animation-delay: -5s;
+}
+.background div:nth-child(6) {
+    left: 40%;
+    animation: background-animation 12s linear infinite;
+}
+.background div:nth-child(7) {
+    left: 73%;
+    animation: background-animation 16s linear infinite;
+    animation-delay: -2s;
+}
+.background div:nth-child(8) {
+    left: 30%;
+    animation: background-animation 7s linear infinite;
+}
+.background div:nth-child(9) {
+    left: 1%;
+    animation: background-animation 4s linear infinite;
+    animation-delay: -4s;
+}
+.background div:nth-child(10) {
+    animation: background-animation 9s linear infinite;
+    left: 65%;
+}
+
+@keyframes background-animation {
+    0% {
+        opacity: 0;
+        top: -10%;
+        transform: rotateZ(180deg);
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        top: 110%;
+    }
+}
+
+.background2 {
+    transform: scale(2);
+    filter: blur(1px);
+}
+
+.background3 {
+    transform: scale(0.6);
+    filter: blur(2px);
+}
+
 .button {
     padding: 10px 35px;
     font-size: 25px;
