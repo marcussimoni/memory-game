@@ -29,6 +29,7 @@
     box-shadow: 1px 1px #D1C0B3;
     cursor: pointer;
     transition: 1s background;
+    border-radius: 5px;
 }
 
 #header button:hover{
