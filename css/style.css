@@ -124,14 +124,14 @@ section {
     background: #204739;
     width: 95%;
     opacity: 1;
-    padding: 70px 15px;
+    padding: 120px 15px 50px;
 }
 
 .panel {
     position: absolute;
     top: 0;
     left: 0;
-    padding-left: 10px;
+    padding-left: 20px;
     padding-top: 20px;
 }
 
