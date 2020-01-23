@@ -14,7 +14,7 @@
 .card {
     width: 150px;
     height: 200px;
-    border: 1px solid black;
+    border: 1px solid #15231F;
     border-radius: 5px;
     margin-left: 20px;
     margin-bottom: 20px;
@@ -22,7 +22,7 @@
     font-size: 35px;
     text-align: center;
     vertical-align: middle;
-    box-shadow: 1px 1px black;
+    box-shadow: 1px 1px #15231F;
     cursor: pointer;
     display: inline-block;
     border:1px solid #ccc;
