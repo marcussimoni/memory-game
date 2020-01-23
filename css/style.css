@@ -2,11 +2,10 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    font-family: 'Bangers', cursive;
 }
 
 section {
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
     background: radial-gradient(#15231F, #1A332A);
