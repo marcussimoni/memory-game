@@ -1,37 +1,18 @@
-#header {
+.header {
     position: relative;
-    height: 150px;
     text-align: center;
     padding: 50px;
+    width: 500px;
     color: white;
-    box-shadow: 1px 1px #ccc;
+    margin: 0 auto;
 }
 
-#header h1 {
-    font-size: 35px;
+.header h1 {
+    font-size: 50px;
+    text-shadow: 3px 3px black;
 }
 
-#header ul{
-    font-size: 20px;
-    display: inline-block;
-}
-
-#header li {
-    display: inline-block;
-    margin-left: 10px;
-}
-
-#header button{
-    font-size: 20px;
-    padding: 10px 50px;
-    border: none;
-    background: #fff;
-    box-shadow: 1px 1px #D1C0B3;
-    cursor: pointer;
-    transition: 1s background;
-    border-radius: 5px;
-}
-
-#header button:hover{
-    background: #D1C0B3;
+.header h2 {
+    font-size: 30px;
+    text-shadow: 3px 3px black;
 }
