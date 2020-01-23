@@ -107,13 +107,6 @@ section {
     filter: blur(2px);
 }
 
-.button {
-    padding: 10px 35px;
-    font-size: 25px;
-    font-family: 'Times New Roman', Times, serif;
-    box-shadow: 10px;
-}
-
 .content {
     text-align: center;
     margin: 0 auto;
