@@ -7,7 +7,7 @@
         <title>Memory Game</title>
         <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" href="css/style.css">
-        <!-- <link rel="stylesheet" href="css/css-reset.css"> -->
+        <link rel="stylesheet" href="css/css-reset.css">
         <link rel="stylesheet" href="css/cards.css">
         <link rel="stylesheet" href="css/modal.css">
         <link href="https://fonts.googleapis.com/css?family=Bangers|Indie+Flower&display=swap" rel="stylesheet">
@@ -51,43 +51,46 @@
                 <div class="card-background">9</div>
                 <div class="card-background">10</div>
             </div>
+        </section>    
             
-            <main>
-            
-                <div id="header">
-                    <h1>Memory Game</h1>
-                    <h2>Test your memory skills finding the cards</h2>
-                    <ul>
-                        <li>
-                            <h3>Level: <span id="level">1</span></h3> 
-                        </li>
-                        <li>
-                            <h3>Attemps: <span id="attempts">20</span></h3>
-                        </li>
-                        <li>
-                            <h3>Score: <span id="score">0</span></h3>
-                        </li>
-                        <li>
-                            <button id="hint" title="Show match card">Hints</button>
-                        </li>
-                    </ul>
-                </div>
+        <main>
+        
+            <div class="header">
+                <h1>Memory Game</h1>
+                <h2>Test your memory skills finding the cards</h2>
+            </div>
 
-                <div id="card-content" class="card-content"></div>
+            <section class="content">
+                <div id="card-content"></div>
+                
+                    <div class="panel">
+                        <ul>
+                            <li><h3>Level: <span id="level">1</span></h3></li>  
+                            <li><h3>Attemps: <span id="attempts">20</span></h3></li>
+                            <li><h3>Score: <span id="score">0</span></h3></li>
+                            <li><h3>Difficulty: <span id="difficulty-selected"></span></h3></li>
+                        </ul>
+                    </div>
+                    <div class="actions">
+                        <ul><li><button id="hint" title="Show match card">Hints</button></li></ul>
+                    </div>
+                
+            </section>
 
-                <div class="modal-background" id="modal-background">
-                    <div id="modal" class="modal">
-                        <div class="modal-content">
-                            <div class="modal-header" id="modal-header"></div>
-                            <div class="modal-body" id="modal-body"></div>
-                            <div class="modal-footer" id="modal-footer"></div>
-                        </div>
+
+            <div class="modal-background" id="modal-background">
+                <div id="modal" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header" id="modal-header"></div>
+                        <div class="modal-body" id="modal-body"></div>
+                        <div class="modal-footer" id="modal-footer"></div>
                     </div>
                 </div>
+            </div>
 
-            </main>
+        </main>
 
-        </section>
+        
     </body>
     <script src="js/LevelConfig.js"></script>
     <script src="js/DomUtil.js"></script>
