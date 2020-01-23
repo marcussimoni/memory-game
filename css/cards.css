@@ -12,14 +12,14 @@
 }
 
 .card {
-    width: 150px;
-    height: 200px;
+    width: 100px;
+    height: 150px;
     border: 1px solid #15231F;
     border-radius: 5px;
     margin-left: 20px;
     margin-bottom: 20px;
     background-color: #fff;
-    font-size: 35px;
+    font-size: 50px;
     text-align: center;
     vertical-align: middle;
     box-shadow: 1px 1px #15231F;
@@ -28,57 +28,18 @@
     border:1px solid #ccc;
     transition: 0.5s;
     opacity: 1;
+    text-shadow: 2px 2px #15231F;
+    color: #204739;
 }
 
 .card:hover {
     outline:none;
-    border-color: #fff;
-    box-shadow: 1px 1px  #fff;
+    border: 1px solid white;
 }
 
-.card-clicked {
-    width: 150px;
-    height: 200px;
-    border: 1px solid black;
-    border-radius: 5px;
-    margin-left: 20px;
-    margin-bottom: 20px;
-    font-size: 35px;
-    text-align: center;
-    vertical-align: middle;
-    box-shadow: 1px 1px black;
-    cursor: pointer;
-    display: inline-block;
-    background-color: white ;
-    border:1px solid #ccc;
-    transition: 0.5s;
-    position: relative;
-}
-.card-clicked:after {
-    content: '';
-    position: absolute;
-    left: -2px;
-    top: -2px;
-    background: linear-gradient(45deg, #fb0094, #0000ff, #00ff00,#ffff00, #ff0000, #fb0094, 
-        #0000ff, #00ff00,#ffff00, #ff0000);
-    background-size: 400%;
-    width: calc(100% + 4px);
-    height: calc(100% + 4px);
-    z-index: -1;
-    animation: steam 20s linear infinite;
-    border-radius: 10px;
-}
-.card-clicked:after {
-    filter: blur(10px);
-}
-
-@keyframes steam {
-    from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: 400% 0;
-    }
+.card:after {
+    box-shadow: 5px 5px white;
+    filter: blur(1px);
 }
 
 .clear {
@@ -92,6 +53,34 @@
 
 .hint-effect {
     animation: hint-animation 1s infinite;
+}
+
+.hint-effect:after{
+    content: '';
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    background: linear-gradient(45deg, #388659, #52AA5E, #52AA8A, #3AAED8, #2BD9FE);
+    background-size: 400%;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    z-index: -1;
+    animation: steam 20s linear infinite;
+    border-radius: 5px;
+}
+
+.hint-effect:before {
+    border:1px solid white;
+    filter: blur(10px);
+}
+
+@keyframes steam {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 400% 0;
+    }
 }
 
 @keyframes hint-animation {
