@@ -23,6 +23,7 @@ class Main {
         const cardController = new CardController(difficulty.value)
         cardController.configNewGame(1)
         this.hideModal()
+        this.domUtil.updateElement('difficulty-selected', difficulty.value)
     }
 
     hideModal = () => {
