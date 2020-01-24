@@ -9,7 +9,7 @@
     font-size: 50px;
     text-align: center;
     vertical-align: middle;
-    box-shadow: 1px 1px #15231F;
+    box-shadow: 1px 1px 5px #15231F;
     cursor: pointer;
     display: inline-block;
     border:1px solid #ccc;
@@ -17,7 +17,7 @@
     opacity: 1;
     text-shadow: 2px 2px #15231F;
     color: #204739;
-    box-shadow: 3px 3px black;
+    box-shadow: 3px 3px 5px black;
 }
 
 .card:hover {
